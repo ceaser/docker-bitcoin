@@ -1,0 +1,20 @@
+version: "2"
+services:
+  bitcoin:
+    build:
+      context: .
+      #args:
+       #- DEB_PROXY=http://dockerhost:3142
+    image: ceaser/bitcoin
+    container_name: bitcoin
+    hostname: bitcoin
+    tty: true
+    stdin_open: true
+    ports:
+      - "8333:8333/tcp"
+    volumes:
+      - ./../data:/data
+    logging:
+      options:
+        max-size: "100k"
+        max-file: "2"
